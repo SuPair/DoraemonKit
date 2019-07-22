@@ -31,6 +31,8 @@ public class FileUtil {
     public static final String TXT = "txt";
     public static final String JPG = "jpg";
     public static final String DB = "db";
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String XML = ".xml";
 
     private FileUtil() {
     }
@@ -185,6 +187,23 @@ public class FileUtil {
         return "db".equals(suffix);
     }
 
+    public static boolean isSp(File file) {
+        File parentFile = file.getParentFile();
+        if (parentFile != null && parentFile.getName().equals(SHARED_PREFS) && file.getName().contains(XML)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isTxt(File file) {
+        if (file == null) {
+            return false;
+        }
+        String suffix = getSuffix(file);
+
+        return TXT.equals(suffix);
+    }
+
     /**
      * @param file
      */
@@ -194,6 +213,7 @@ public class FileUtil {
             for (File f : listFiles) {
                 deleteDirectory(f);
             }
+            file.delete();
         } else {
             file.delete();
         }

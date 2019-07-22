@@ -17,11 +17,16 @@
     <string name="dk_kit_temporary_close">Hide Doraemon</string>
     <string name="dk_kit_crash">Crash Viewer</string>
     <string name="dk_kit_data_clean">Cache Cleanup</string>
+    <string name="dk_kit_weak_network">Simulated Weak Network</string>
     <string name="dk_kit_view_check">View Ciewer</string>
     <string name="dk_kit_net_monitor">Traffic Monitor</string>
     <string name="dk_kit_time_counter">Time Counter</string>
     <string name="dk_kit_exit">Exit</string>
     <string name="dk_kit_db_detail">Data Base</string>
+    <string name="dk_kit_top_activity">Top Activity</string>
+    <string name="dk_kit_pkg_name">Package Name：</string>
+    <string name="dk_kit_class_name">Class Name：</string>
+    <string name="dk_kit_path_name">Class Path：</string>
 
     <string name="dk_sysinfo_device_info">Mobile Info</string>
     <string name="dk_sysinfo_app_info">App Info</string>
@@ -47,6 +52,9 @@
     <string name="dk_frameinfo_fps">FPS</string>
     <string name="dk_frameinfo_cpu">CPU</string>
     <string name="dk_frameinfo_custom">CUSTOM</string>
+    <string name="dk_frameinfo_upstream">Upstream traffic</string>
+    <string name="dk_frameinfo_downstream">Downstream traffic</string>
+    <string name="dk_frameinfo_avg_value">Average value</string>
 
     <string name="dk_log_info_edt_hint">Enter the keywords you want to filter</string>
     <string name="dk_log_info_verbose">Verbose</string>
@@ -57,6 +65,7 @@
 
     <string name="dk_web_door_hint">Enter the address to jump</string>
     <string name="dk_web_door_explore">Click To Jump</string>
+    <string name="dk_web_door_clear_history">Clear History</string>
 
     <string name="dk_gpsmock_tv_location">Mock</string>
     <string name="dk_gpsmock_hint_latitude">Input latitude</string>
@@ -80,6 +89,15 @@
     <string name="dk_crash_capture_look">View Crash Log</string>
     <string name="dk_crash_capture_clean_data">Clean Crash Cache</string>
     <string name="dk_crash_capture_summary_title">Crash Log List</string>
+
+    <string name="dk_weak_network_switch">Simulate Weak Network Switch</string>
+    <string name="dk_weak_network_off">Off Network</string>
+    <string name="dk_weak_network_timeout">Time Out</string>
+    <string name="dk_weak_network_speed_limit">Speed Limit</string>
+    <string name="dk_weak_network_request_limit">Request Speed Limit:</string>
+    <string name="dk_weak_network_response_limit">Response Speed Limit：</string>
+    <string name="dk_weak_network_limit_message">request speed limit will limit speed when uploading, response speed limit will limit speed when downloading, 0 does not limit speed</string>
+
     <string name="dk_back">Back</string>
     <string name="dk_frameinfo_ram">RAM</string>
     <string name="dk_kit_network_monitor">Network Monitor</string>
@@ -138,8 +156,8 @@
     <string name="dk_item_time_counter_switch">Activity Time Counter</string>
     <string name="dk_item_time_goto_list">View History</string>
     <string name="dk_kit_block_time_counter_list">Time Counter History</string>
-    <string name="dk_submit" >submit</string>
-    <string name="dk_cancel" >cancel</string>
+    <string name="dk_submit">submit</string>
+    <string name="dk_cancel">cancel</string>
     <string name="dk_delete">delete</string>
     <string name="dk_db_tips_insert">insert</string>
 
@@ -152,5 +170,11 @@
 
     <string name="dk_platform_monitor_data_button">start test</string>
     <string name="dk_platform_monitor_data_button_stop">stop test</string>
+    <string name="dk_platform_monitor_view_stat_data">view statistics</string>
+    <string name="dk_platform_monitor_page_data">page data</string>
+    <string name="dk_log_text_loading">Loading...</string>
+    <string name="dk_crash_need_permission">Please authorize permissions</string>
+    <string name="dk_data_clean_toast">Clear system data</string>
+    <string name="dk_error_tips_permissions_less">Please authorize permissions</string>
 
 </resources>

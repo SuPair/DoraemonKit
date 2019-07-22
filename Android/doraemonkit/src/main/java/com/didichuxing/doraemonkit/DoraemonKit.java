@@ -13,27 +13,28 @@ import com.didichuxing.doraemonkit.kit.IKit;
 import com.didichuxing.doraemonkit.kit.alignruler.AlignRuler;
 import com.didichuxing.doraemonkit.kit.blockmonitor.BlockMonitorKit;
 import com.didichuxing.doraemonkit.kit.colorpick.ColorPicker;
+import com.didichuxing.doraemonkit.kit.crash.CrashCapture;
 import com.didichuxing.doraemonkit.kit.custom.Custom;
-import com.didichuxing.doraemonkit.kit.gpsmock.ServiceHookManager;
-import com.didichuxing.doraemonkit.kit.parameter.cpu.Cpu;
-import com.didichuxing.doraemonkit.kit.crash.Crash;
 import com.didichuxing.doraemonkit.kit.dataclean.DataClean;
 import com.didichuxing.doraemonkit.kit.fileexplorer.FileExplorer;
-import com.didichuxing.doraemonkit.kit.parameter.frameInfo.FrameInfo;
-import com.didichuxing.doraemonkit.kit.gpsmock.GpsMockManager;
 import com.didichuxing.doraemonkit.kit.gpsmock.GpsMock;
+import com.didichuxing.doraemonkit.kit.gpsmock.GpsMockManager;
+import com.didichuxing.doraemonkit.kit.gpsmock.ServiceHookManager;
 import com.didichuxing.doraemonkit.kit.layoutborder.LayoutBorder;
 import com.didichuxing.doraemonkit.kit.logInfo.LogInfo;
 import com.didichuxing.doraemonkit.kit.network.NetworkKit;
+import com.didichuxing.doraemonkit.kit.parameter.cpu.Cpu;
+import com.didichuxing.doraemonkit.kit.parameter.frameInfo.FrameInfo;
 import com.didichuxing.doraemonkit.kit.parameter.ram.Ram;
 import com.didichuxing.doraemonkit.kit.sysinfo.SysInfo;
 import com.didichuxing.doraemonkit.kit.temporaryclose.TemporaryClose;
 import com.didichuxing.doraemonkit.kit.timecounter.TimeCounterKit;
+import com.didichuxing.doraemonkit.kit.timecounter.instrumentation.HandlerHooker;
 import com.didichuxing.doraemonkit.kit.viewcheck.ViewChecker;
+import com.didichuxing.doraemonkit.kit.weaknetwork.WeakNetwork;
 import com.didichuxing.doraemonkit.kit.webdoor.WebDoor;
 import com.didichuxing.doraemonkit.kit.webdoor.WebDoorManager;
 import com.didichuxing.doraemonkit.ui.FloatIconPage;
-import com.didichuxing.doraemonkit.ui.KitFloatPage;
 import com.didichuxing.doraemonkit.ui.UniversalActivity;
 import com.didichuxing.doraemonkit.ui.base.FloatPageManager;
 import com.didichuxing.doraemonkit.ui.base.PageIntent;
@@ -64,6 +65,8 @@ public class DoraemonKit {
 
     private static boolean sShowFloatingIcon = true;
 
+    private static boolean sEnableUpload = true;
+
     public static void install(final Application app) {
         install(app, null);
     }
@@ -87,6 +90,7 @@ public class DoraemonKit {
             return;
         }
         sHasInit = true;
+        HandlerHooker.doHook(app);
         ServiceHookManager.getInstance().install();
         app.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             int startedActivityCounts;
@@ -158,9 +162,10 @@ public class DoraemonKit {
             tool.add(new GpsMock());
         }
         tool.add(new WebDoor());
-        tool.add(new Crash());
+        tool.add(new CrashCapture());
         tool.add(new LogInfo());
         tool.add(new DataClean());
+        tool.add(new WeakNetwork());
 
         performance.add(new FrameInfo());
         performance.add(new Cpu());
@@ -204,8 +209,9 @@ public class DoraemonKit {
         sKitMap.put(Category.CLOSE, exit);
 
         FloatPageManager.getInstance().init(app);
-
-        DoraemonStatisticsUtil.uploadUserInfo(app);
+        if (sEnableUpload) {
+            DoraemonStatisticsUtil.uploadUserInfo(app);
+        }
     }
 
     private static void requestPermission(Context context) {
@@ -264,12 +270,18 @@ public class DoraemonKit {
             showFloatIcon(null);
         }
         sShowFloatingIcon = true;
-
     }
 
     public static void hide() {
-        FloatPageManager.getInstance().removeAll(KitFloatPage.class);
-//        sShowFloatingIcon = false;
+        FloatPageManager.getInstance().removeAll();
+        sShowFloatingIcon = false;
+    }
+
+    /**
+     * 禁用app信息上传开关，该上传信息只为做DoKit接入量的统计，如果用户需要保护app隐私，可调用该方法进行禁用
+     */
+    public static void disableUpload() {
+        sEnableUpload = false;
     }
 
     public static boolean isShow() {

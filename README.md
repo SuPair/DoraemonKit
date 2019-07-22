@@ -1,8 +1,8 @@
 <div align="center">    
  <img src="https://javer.oss-cn-shanghai.aliyuncs.com/doraemon/github/DoraemonKit_github.png" width = "150" height = "150" alt="DoraemonKit" align=left />
  <img src="https://img.shields.io/github/license/didi/DoraemonKit.svg" align=left />
- <img src="https://img.shields.io/badge/Android-1.1.5-blue.svg" align=left />
- <img src="https://img.shields.io/badge/iOS-1.1.7-yellow.svg" align=left />
+ <img src="https://img.shields.io/badge/Android-1.1.8-blue.svg" align=left />
+ <img src="https://img.shields.io/badge/iOS-1.2.0-yellow.svg" align=left />
  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" align=left />
 </div>
 
@@ -15,7 +15,7 @@
 <br/>
 <br/>
 
-**DoraemonKit** /'dɔ:ra:'emɔn/，简称`DoKit`，中文名 `哆啦A梦`，意味着能够像哆啦A梦一样提供给他的主人各种各样的工具。
+**DoraemonKit** /'dɔ:ra:'emɔn/，简称`DoKit`，中文名 `哆啦A梦`，意味着能够像哆啦A梦一样提供给他的主人各种各样的工具。Just Do Kit
 
 > [English Introduction](README_EN.md)
 
@@ -49,6 +49,7 @@ DoraemonKit 是一个功能集合面板，能够让每一个 App 快速接入一
 7. **【清除本地数据】** 一键删除沙盒中所有数据；
 8. **【NSLog】** 把所有 NSLog 信息打印到UI界面，避免没有开发证书无法调式的尴尬；
 9. **【Lumberjack】** 每一条 CocoaLumberjack 的日志信息，都在在 App 的界面中显示出来，再也不需要导出日志这么麻烦。
+10. **【YYDebugDatabase】** 通过网页方便快捷的操作应用内数据库，让数据库d调试变得非常优雅。
 
 ### 二、性能检测
 
@@ -66,6 +67,13 @@ DoraemonKit 是一个功能集合面板，能够让每一个 App 快速接入一
 2. **【组件检查】** 可以抓取任意一个UI控件，查看它们的详细信息，包括控件名称、控件位置、背景色、字体颜色、字体大小；
 3. **【对齐标尺】** 参考 Android 系统自带测试工具，能够实时捕获屏幕坐标，并且可以查看组件是否对齐；
 4. **【元素边框线】** 绘制出每一个 UI 组件的边框，对于组件布局有一定的参考意义。 
+
+### 四、Weex专项工具
+
+1. **【console日志查看】** 方便在端上查看每一个Weex文件中的console日志，提供分级和搜索功能；
+2. **【storage缓存查看】** 将Weex中的storage模块的本地缓存数据可视化展示；
+3. **【容器信息】** 查看每一个打开的Weex页面的基本信息和性能数据；
+4. **【DevTool】** 快速开启Weex DevTool的扫码入口。
 
 ## 接入文档
 
@@ -104,92 +112,29 @@ DoraemonKit 是一个功能集合面板，能够让每一个 App 快速接入一
 ## 项目成员
 
 ### 发起者 / 负责人
+[yixiangboy](https://github.com/yixiangboy)
 
-<table id='team'>
-    <tr>
-        <td id='yixiangboy'>
-            <a href='https://github.com/yixiangboy'>
-        		<img src='https://github.com/yixiangboy.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/yixiangboy'>yixiangboy</a>
-        	</h4>
-        </td>
-    </tr>
-</table>
+### 内部核心成员
+[LinJZong](https://github.com/LinJZong) 、
+[wanglikun7342](https://github.com/wanglikun7342) 、
+[wenquanlebao](https://github.com/wenquanlebao) 、
+[hiXgb](https://github.com/hiXgb) 、 
+[Chinnko](https://github.com/Chinnko) 、 
+[y644938647](https://github.com/y644938647) 、 
+[goolong](https://github.com/goolong)
 
-### 贡献者
+### 外部贡献者
+[huakucha](https://github.com/huakucha) 、
+[HuginChen](https://github.com/HuginChen) 、
+[feng562925462](https://github.com/feng562925462) 、
+[azhon](https://github.com/azhon) 、
+[rex26](https://github.com/rex26) 、
+[csc-EricWu](https://github.com/csc-EricWu) 、
+[dengyuhan](https://github.com/dengyuhan) 、
+[0xd-cc](https://github.com/0xd-cc) 、
+[k373379320](https://github.com/k373379320) 、
+[fabcz](https://github.com/fabcz)
 
-<table id='team'>
-    <tr>
-        <td id='wenquanlebao'>
-            <a href='https://github.com/wenquanlebao'>
-        		<img src='https://github.com/wenquanlebao.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/wenquanlebao'>wenquanlebao</a>
-        	</h4>
-        </td>
-        <td id='hiXgb'>
-            <a href='https://github.com/hiXgb'>
-        		<img src='https://github.com/hiXgb.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/hiXgb'>hiXgb</a>
-        	</h4>
-        </td>
-        <td id='teethandnail'>
-            <a href='https://github.com/teethandnail'>
-        		<img src='https://github.com/teethandnail.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/teethandnail'>teethandnail</a>
-        	</h4>
-        </td>
-        <td id='wanglikun7342'>
-            <a href='https://github.com/wanglikun7342'>
-        		<img src='https://github.com/wanglikun7342.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/wanglikun7342'>wanglikun7342</a>
-        	</h4>
-        </td>
-        <td id='Chinnko'>
-            <a href='https://github.com/Chinnko'>
-        		<img src='https://github.com/Chinnko.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/Chinnko'>Chinnko</a>
-        	</h4>
-        </td>
-    </tr>
-    <tr>
-        <td id='LinJZong'>
-            <a href='https://github.com/LinJZong'>
-        		<img src='https://github.com/LinJZong.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/LinJZong'>LinJZong</a>
-        	</h4>
-        </td>
-        <td id='y644938647'>
-            <a href='https://github.com/y644938647'>
-        		<img src='https://github.com/y644938647.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/y644938647'>y644938647</a>
-        	</h4>
-        </td>
-        <td id='huakucha'>
-            <a href='https://github.com/huakucha'>
-        		<img src='https://github.com/huakucha.png?v=3&s=330' width="165" height="165">
-        	</a>
-            <h4 align='center'>
-        		<a href='https://github.com/huakucha'>huakucha</a>
-        	</h4>
-        </td>
-    </tr>
-</table>
 
 ## 协议
 

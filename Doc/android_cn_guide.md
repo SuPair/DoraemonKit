@@ -5,14 +5,31 @@
 ```
 dependencies {
 	...
-    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:1.1.5'
-    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.1.5'
+    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:1.1.8'
+    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:1.1.8'
     ...
 }
 ```
 
 最新版本参见[这里](android-ReleaseNotes.md)。
 
+DoraemonKit目前已支持Weex工具，包括
+
+* Console日志查看
+* Storage缓存查看
+* 容器信息
+* DevTool
+
+如果有需要支持Weex的需求可以直接添加下面依赖
+
+```
+dependencies {
+	...
+    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit-weex:0.0.1'
+    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-weex-no-op:0.0.1'
+    ...
+}
+```
 
 
 #### 2. 初始化
@@ -35,6 +52,23 @@ public void onCreate() {
 } 
 ```
 
+如果已接入了Weex工具（暂不支持自定义功能组件），使用下面方式初始化
+
+```
+@Override
+public void onCreate() {
+	...
+    DKWeexInstance.install(application)
+     
+    // H5任意门功能需要，非必须
+    DoraemonKit.setWebDoorCallback(new WebDoorManager.WebDoorCallback() {
+    @Override
+    public void overrideUrlLoading(Context context, String s) {
+        // 使用自己的H5容器打开这个链接
+    }
+    ...
+} 
+```
 
 
 #### 3. 流量监控功能（可选）
@@ -55,15 +89,30 @@ buildscript {
 }
 ```
 
-在app的build.gradle中添加plugin。
+在app的build.gradle中添加plugin和引用。新版本中已经将插件用到的注解类提取到单独的aar中，用以解决
+和其他AspectJ插件冲突问题。如果项目中引用了其他AspectJ插件，请勿引用本插件，改为手动注册。
 
 ```
 ...
 apply plugin: 'android-aspectjx'
+dependencies {
+	...
+    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit-aop:1.0.0'
+    ...
+}
 ```
 
+注：
+使用插件有两个目的：1是实现网络请求的自动监控和模拟弱网功能，不需要手动写其他代码。2是可以实现三方jar包内的请求的hook。
+但使用插件会稍微影响到编译速度。如果不需要这个功能，可以通过手动添加DoraemonInterceptor的方式进行OkHttp的监控,如下：
 
-
+```
+OkHttpClient client = new OkHttpClient().newBuilder()
+                //用于模拟弱网的拦截器
+                .addNetworkInterceptor(new DoraemonWeakNetworkInterceptor())
+                //网络请求监控的拦截器
+                .addInterceptor(new DoraemonInterceptor()).build();
+```
 #### 4. 自定义功能组件（可选）
 
 自定义组件需要实现IKit接口，该接口对应哆啦A梦功能面板中的组件。
